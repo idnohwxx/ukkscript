@@ -1,7 +1,6 @@
 import subprocess
 import logging
 
-# Logging setup
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 
 def run_command(command: str):
@@ -17,11 +16,11 @@ def run_command(command: str):
         raise
 def configure_dependencies():
     sources_list = """
-    deb http://deb.debian.org/debian bookworm main contrib non-free
-    deb http://security.debian.org/debian-security bookworm-security main contrib non-free
-    deb http://deb.debian.org/debian bookworm-updates main contrib non-free
+deb http://deb.debian.org/debian bookworm main contrib non-free
+deb http://security.debian.org/debian-security bookworm-security main contrib non-free
+deb http://deb.debian.org/debian bookworm-updates main contrib non-free
     """
-    with open("/etc/apt/sources.list", "a") as f:
+    with open("/etc/apt/sources.list", "w") as f:
         f.write(sources_list)
     logging.info("Sources list updated.")
 
@@ -29,7 +28,6 @@ def configure_bind9():
     """
     Configure BIND9 DNS server.
     """
-    # Example: Write a DNS zone file
     zone_config = """
     zone "example.com" {
         type master;
@@ -40,7 +38,6 @@ def configure_bind9():
         f.write(zone_config)
     logging.info("BIND9 configured successfully.")
 
-    # Example DNS zone file
     dns_zone = """
     $TTL    604800
     @       IN      SOA     ns1.example.com. admin.example.com. (
