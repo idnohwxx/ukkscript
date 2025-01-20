@@ -27,7 +27,6 @@ deb http://deb.debian.org/debian bookworm-updates main contrib non-free
 def configure_bind9():
 
     run_command('apt install -y bind9')
-    run_command('rm /etc/bind/forward /etc/bind/reverse')
     run_command('cp /etc/bind/db.local /etc/bind/forward')
     run_command('cp /etc/bind/db.127 /etc/bind/reverse')
 
